@@ -100,8 +100,8 @@ int main(void)
 		printf("Hello World\n");
 		HAL_GPIO_TogglePin(LED0_GPIO_Port,LED0_Pin);
 		HAL_Delay(1000);
-		HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-		HAL_Delay(1000);
+		//HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
+		//HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -215,12 +215,22 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if (GPIO_Pin==BUTTON_N_Pin)
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+}
 
 /* USER CODE END 4 */
 
