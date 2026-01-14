@@ -57,9 +57,9 @@ build-gen:
           category: sourceC
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/ARM/CMSIS-RTX/5.9.0/Source/rtx_timer.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX/RTE/CMSIS/RTX_Config.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX-uvsion/RTE/CMSIS/RTX_Config.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX/RTE/CMSIS/RTX_Config.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX-uvsion/RTE/CMSIS/RTX_Config.h
           category: header
     - component: Keil::CMSIS Driver:USART@3.0.0
       from-pack: ARM::CMSIS-Driver_STM32@1.3.0
@@ -82,5 +82,5 @@ build-gen:
   groups:
     - group: Source Group 1
       files:
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX/retarget_stdio.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-BLINKY-CUBEMX-uvsion/retarget_stdio.c
           category: sourceC
