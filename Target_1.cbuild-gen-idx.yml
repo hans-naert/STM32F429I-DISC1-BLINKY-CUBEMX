@@ -4,10 +4,10 @@ build-gen-idx:
     - board: 
       device: STM32F429ZITx
       id: CubeMX
-      output: D:/cursussen/iot-systems/les0202/f429/STM32CubeMX/Target_1/
+      output: D:/cursussen/iot-systems/les0902/STM32CubeMX/Target_1/
       project-type: single-core
       cbuild-gens:
-        - cbuild-gen: D:/cursussen/iot-systems/les0202/f429/f429.Target_1.cbuild-gen.yml
+        - cbuild-gen: D:/cursussen/iot-systems/les0902/f429.Target_1.cbuild-gen.yml
           configuration: .Target_1
-          name: D:/cursussen/iot-systems/les0202/f429/STM32CubeMX/Target_1/f429.cgen.yml
+          name: D:/cursussen/iot-systems/les0902/STM32CubeMX/Target_1/f429.cgen.yml
           project: f429
