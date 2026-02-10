@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <cmsis_os2.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,6 +58,14 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void app_main(void *argument) 
+{
+ while(1)
+ {
+  HAL_GPIO_TogglePin(LED1_N_GPIO_Port,LED1_N_Pin);
+  osDelay(1000);
+ }
+}
 
 /* USER CODE END 0 */
 
@@ -93,11 +103,16 @@ int main(void)
 	stdio_init();
 	printf("Hello Vives\n");
 	fflush(stdout);
-	int number;
-	printf("Give number:\n");
-	scanf("%d",&number);
-	printf("incremented number is %d\n",++number);
+	//int number;
+	//printf("Give number:\n");
+	//scanf("%d",&number);
+	//printf("incremented number is %d\n",++number);
 	
+	osKernelInitialize();         // Initialize CMSIS-RTOS
+  osThreadNew(app_main, NULL, NULL);  // Create application main thread
+  osKernelStart();           // Start thread execution
+
+
 
   /* USER CODE END 2 */
 
@@ -240,6 +255,28 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 }
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM8 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM8)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
